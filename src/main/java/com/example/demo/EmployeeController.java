@@ -33,4 +33,32 @@ public class EmployeeController {
     public Employee getHighestPaidEmployee() {
         return service.getHighestPaidEmployee().orElse(null);
     }
+    
+    
+    
+
+    @GetMapping("/sorted")
+    public List<Employee> getSorted() {
+        return service.getEmployeesSortedBySalaryDesc();
+    }
+
+    @GetMapping("/distinct-names")
+    public List<String> getDistinctNames() {
+        return service.getDistinctEmployeeNames();
+    }
+
+    @GetMapping("/top3")
+    public List<Employee> getTop3() {
+        return service.getTop3HighestPaid();
+    }
+
+    @GetMapping("/active-count")
+    public long getActiveCount() {
+        return service.countActiveEmployees();
+    }
+    
+    
+    
+    
+    
 }

@@ -37,4 +37,40 @@ public class EmployeeService {
     public List<Employee> getAllEmployees() {
         return employees;
     }
+    
+    
+    
+
+    // sorted()
+    public List<Employee> getEmployeesSortedBySalaryDesc() {
+        return employees.stream()
+                .sorted((e1, e2) -> Double.compare(e2.getSalary(), e1.getSalary()))
+                .collect(Collectors.toList());
+    }
+
+    // distinct() with names
+    public List<String> getDistinctEmployeeNames() {
+        return employees.stream()
+                .map(Employee::getName)
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    // limit()
+    public List<Employee> getTop3HighestPaid() {
+        return employees.stream()
+                .sorted((e1, e2) -> Double.compare(e2.getSalary(), e1.getSalary()))
+                .limit(3)
+                .collect(Collectors.toList());
+    }
+
+    // count()
+    public long countActiveEmployees() {
+        return employees.stream()
+                .filter(Employee::isActive)
+                .count();
+    }
+    
+    
+    
 }
